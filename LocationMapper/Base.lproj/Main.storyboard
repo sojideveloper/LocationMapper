@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Location Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LocationMapViewController" customModule="LocationMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,94 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use current location?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5W-X8-sfK">
+                                <rect key="frame" x="20" y="42" width="159" height="24"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qs8-98-Wmn">
+                                <rect key="frame" x="0.0" y="160" width="600" height="440"/>
+                            </mapView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter an address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="61E-7Z-f5w">
+                                <rect key="frame" x="20" y="92" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meK-mN-3nc">
+                                <rect key="frame" x="270" y="130" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.076932884752750397" green="0.51162022352218628" blue="0.80235880613327026" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Ayt-kB-atO"/>
+                                    <constraint firstAttribute="width" constant="60" id="dWu-w5-A30"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                <state key="normal" title="Show">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="19f-5G-HIX"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PyN-hD-nlb">
+                                <rect key="frame" x="480" y="32" width="100" height="41"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Yes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8Z-TF-xBr">
+                                        <rect key="frame" x="64" y="9" width="28" height="23"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                        <color key="textColor" red="0.64262741804122925" green="0.92639917135238647" blue="0.65725553035736084" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Pr-Hj-V4c">
+                                        <rect key="frame" x="7" y="4" width="51" height="31"/>
+                                        <color key="tintColor" red="0.93982505798339844" green="0.13906967639923096" blue="0.25116086006164551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="switchPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="laU-CV-NTj"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" red="0.085689730942249298" green="0.22734692692756653" blue="0.40170472860336304" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="7Pr-Hj-V4c" firstAttribute="leading" secondItem="PyN-hD-nlb" secondAttribute="leading" constant="7" id="86P-yR-GCX"/>
+                                    <constraint firstAttribute="trailing" secondItem="Z8Z-TF-xBr" secondAttribute="trailing" constant="8" id="Vz2-gZ-vlh"/>
+                                    <constraint firstItem="7Pr-Hj-V4c" firstAttribute="centerY" secondItem="PyN-hD-nlb" secondAttribute="centerY" constant="-1" id="mdA-v3-1HD"/>
+                                    <constraint firstAttribute="width" constant="100" id="vNR-bV-mgs"/>
+                                    <constraint firstItem="Z8Z-TF-xBr" firstAttribute="centerY" secondItem="PyN-hD-nlb" secondAttribute="centerY" id="xNk-vf-wvm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.085689730942249298" green="0.22734692692756653" blue="0.40170472860336304" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="61E-7Z-f5w" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="72" id="6Ab-AS-kSO"/>
+                            <constraint firstItem="meK-mN-3nc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="110" id="6Kn-73-SPR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="meK-mN-3nc" secondAttribute="trailing" constant="250" id="CF0-9t-xzX"/>
+                            <constraint firstItem="61E-7Z-f5w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="HTb-IV-DBc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Pr-Hj-V4c" secondAttribute="trailing" constant="44" id="Ije-0z-dgM"/>
+                            <constraint firstItem="qs8-98-Wmn" firstAttribute="top" secondItem="PyN-hD-nlb" secondAttribute="bottom" constant="87" id="K6E-Yc-jEk"/>
+                            <constraint firstItem="qs8-98-Wmn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KfF-Xs-MZZ"/>
+                            <constraint firstItem="61E-7Z-f5w" firstAttribute="top" secondItem="PyN-hD-nlb" secondAttribute="bottom" constant="19" id="YIt-KW-JaM"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="y5W-X8-sfK" secondAttribute="leading" id="ZtS-Ru-CfF"/>
+                            <constraint firstItem="meK-mN-3nc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a6g-w2-0wI"/>
+                            <constraint firstItem="7Pr-Hj-V4c" firstAttribute="centerY" secondItem="y5W-X8-sfK" secondAttribute="centerY" id="fAF-R5-pBq"/>
+                            <constraint firstAttribute="trailing" secondItem="qs8-98-Wmn" secondAttribute="trailing" id="fU6-N8-2JG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qs8-98-Wmn" secondAttribute="bottom" id="iI6-Rs-auH"/>
+                            <constraint firstItem="y5W-X8-sfK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="22" id="jJS-rV-3sB"/>
+                            <constraint firstItem="61E-7Z-f5w" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="v93-f5-kmO"/>
+                            <constraint firstItem="qs8-98-Wmn" firstAttribute="top" secondItem="61E-7Z-f5w" secondAttribute="bottom" constant="38" id="xfh-Ve-C5a"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="currentLocationSwitch" destination="7Pr-Hj-V4c" id="2Sv-bS-KVJ"/>
+                        <outlet property="locationTextField" destination="61E-7Z-f5w" id="Xik-cE-Rsw"/>
+                        <outlet property="mapView" destination="qs8-98-Wmn" id="TbF-kE-pM7"/>
+                        <outlet property="showButton" destination="meK-mN-3nc" id="pYN-dE-V5M"/>
+                        <outlet property="switchLabel" destination="Z8Z-TF-xBr" id="Zoa-N2-Knj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="90" y="420"/>
         </scene>
     </scenes>
 </document>
