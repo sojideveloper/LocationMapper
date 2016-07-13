@@ -54,8 +54,6 @@ class LocationMapViewController: UIViewController {
         
         locationTextField.resignFirstResponder()
         
-        // if useCurrentLocation == true || locationTextField.text == "" {
-
         if useCurrentLocation == true {
             showCurrentLocation()
         } else {
@@ -116,7 +114,7 @@ class LocationMapViewController: UIViewController {
         }
     }
     
-    // MARK: - Map methods...
+    // MARK: - Custom functions for map...
     
     func showLocationOnMap(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -137,9 +135,10 @@ class LocationMapViewController: UIViewController {
     }
     
     
-    // MARK: - UI Markup
+    // MARK: - UI Markup & Handling
     
     func addStyles() {
+        // Perform any custom modifications to views...
         showButton.layer.cornerRadius = 30.0
     }
     
@@ -148,7 +147,6 @@ class LocationMapViewController: UIViewController {
     }
     
     func showAlert(title title: String, message: String) {
-        
         let buttonTitle = "OK"
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let buttonAction = UIAlertAction(title: buttonTitle, style: .Cancel, handler: nil)
@@ -158,7 +156,7 @@ class LocationMapViewController: UIViewController {
     
 }
 
-// MARK: - CLLocationManagerDelegate
+// MARK: - CLLocationManagerDelegate functions
 
 extension LocationMapViewController: CLLocationManagerDelegate {
     
@@ -178,7 +176,7 @@ extension LocationMapViewController: CLLocationManagerDelegate {
     
 }
 
-// MARK: - UITextFieldDelegate
+// MARK: - UITextFieldDelegate function(s)
 
 extension LocationMapViewController: UITextFieldDelegate {
     
